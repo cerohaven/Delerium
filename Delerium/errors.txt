@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 602: keyword argument 'yalign' is incompatible with 'yanchor'.
+    yalign 15
+          ^
+
+Ren'Py Version: Ren'Py 8.1.0.23051307
+Sun Aug 27 19:54:37 2023
