@@ -40,6 +40,13 @@ default sanity_value = spirit_value / mind_value
 # name of the character.
 define y = Character("Yoon", color = "#f53939", what_color = "#f53939", image = "yoon")
 
+image yoon talking:
+    "yoon"
+    0.75
+    "yoon talk"
+    0.75
+    repeat
+
 ##INVENTORY######################################################################
 
 #default declares something as a renpy statement $ calls it as a python statement
@@ -96,8 +103,9 @@ label start:
     "Your spirit is at [spirit_value]."
 
 
-    show yoon happy at left, half_Size:
-        yanchor .5 ypos 1.0 
+    show yoon talking at left, threeQuarter_Size:
+        yanchor .5 ypos 1.0
+        xzoom -1
     y "let's see what I am carrying..."
     #yalign 1.0  yoffset 10, will align the image to the bottom of the screen then lower it exactly 10 pixels further
     #yanchor 0.1, ypos 1.0 will  make the image be 10% below the bottom of the screen and top 90% visible
@@ -124,7 +132,7 @@ label start:
 ##Start
 
     "There is only silence, a suffocating presence that somehow appears to engulf every sense into an all-consuming void.\n"
-    "There are no words to be spoken or sounds to be made. The atmosphere is oppressively motionless and holds a foreboding, menacing aura.\n"
+    "There are no words to be spoken or sounds to be made. The atmosphere is oppressively motionless and holds a foreboding, menacing aura.R\n"
     "It was silence that could speak volumes, like the undusted and underused crevasse of an antique tome lost to time.\n"
     "In this silence, every sound that followed would be magnified by this utter quiet.\n"
     "Demanding absolute respect and consideration for those who would watch."
@@ -154,6 +162,7 @@ label Choices1_b:
 label Choices_CommonRoute_a:
 
     show prologue_base
+    with Dissolve(.75)
     ##show yoon at topleft, threeQuarter_Size 
 
     "Your vision is blurred as the persistent darkness seeps into your eye sockets, creating a black-and-white haze in front of you.\n"
@@ -204,7 +213,8 @@ menu:
         jump Choices_Screens
 
 label Choices_CommonRoute_a_1:
-    scene prologue_yoon 
+    scene prologue_yoon
+    with Dissolve(.75)
     "You begin to writhe in recourse. Staring down at your arms, you look in horror at a trail of wires that lead from your skin to the base of the floor. \n"
     "They have fused with your flesh, becoming one with your body. A convoluted cybernetic network that pulses with an unsettling blue light, is created by the tendrils of metal and plastic that snake through your skin and delve deep into your muscles and organs."
     "You wheeze a struggled breath as you look upon pale and clammy skin. The wires feel as though they are alive and conscious because you can feel them writhing and twitching underneath."
@@ -231,7 +241,7 @@ label Choices_CommonRoute_a_3:
     "Glancing around, a piece of you searches for a glimmer of hope and a way out of this nightmare. As you hold your breath for a moment, every fibre of your being wants this to end-the fear, the uncertainty, the pain. You close your eyes, and for a brief moment, you allow yourself to imagine a moment of respite."
     "Letting yourself hope and wish for a better moment and a better future. And as you do, the world around you begin to shift, unravel, and transform."
     scene prologue_fish
-
+    with Dissolve(.75)
     "A school of Koi fish suddenly swim into view through the porthole. In contrast to the generally drab and lifeless sea, they stood out vividly."
     "Their scales glistening in the dim light, reflecting the white of the bubbles trailing after the submarine and the blackness of the ocean floor."
 menu:
@@ -251,7 +261,7 @@ menu:
 label Choices_CommonRoute_a_5:
     "You notice a glimmer of movement. As you turn to look, a dark figure with a bizarre, twisted appearance appears in the distance." 
     scene prologue_monster
-    with dissolve 
+    with Dissolve(1)
     "You experience a sudden rush of fear as it gets closer. It has tentacles that move in the water like eels and is unlike anything you've ever seen. \n"
     "Its opening maw shows a row of razor-sharp teeth, and its eyes sparkle with an evil intelligence."
     "Watching the creature approach closer and closer with your heart beating, you notice that despite its terrifying appearance, its motions are beautiful and sinuous." 
@@ -261,7 +271,11 @@ label Choices_CommonRoute_a_5:
 
 menu:
     "A jolt upright":
-        hide prologue_monster
+        scene bg bedroom with Dissolve(.75):
+            zoom 1.4
+        show yoon sad2 at left, threeQuarter_Size with Dissolve(.75):
+            yanchor .5 ypos 1.0 
+            xzoom -1
         jump Choices_CommonRoute_b
     
 label Choices_CommonRoute_b:
